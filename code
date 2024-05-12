@@ -50,10 +50,10 @@ INSERT INTO Customers (name, email, city) VALUES ('Lena', 'helen@bk.ru', 'Moscow
 INSERT INTO Customers (name, email, city) VALUES ('Ben', 'bigben@yandex.ru', 'Orel');
 INSERT INTO Customers (name, email, city) VALUES ('Misha', 'Miha@yandex.ru', 'Rostov');
 INSERT INTO Customers (name, email, city) VALUES ('Vika', 'Vichka10@bk.ru', 'Moscow');
-SELECT name, email, order_date FROM Customers JOIN Orders ON Customers.customer_id=Orders.customer_id WHERE EXTRACT(YEAR FROM order_date) = '2023'
-SELECT COUNT (DISTINCT Orders.customer_id), Customers.city FROM Orders JOIN Customers ON Orders.customer_id=Customers.customer_id GROUP BY Customers.city
-SELECT SUM (total_amount) FROM Orders GROUP BY EXTRACT(MONTH FROM order_date)
+SELECT name, email, order_date FROM Customers JOIN Orders ON Customers.customer_id=Orders.customer_id WHERE EXTRACT(YEAR FROM order_date) = '2023';
+SELECT COUNT (DISTINCT Orders.customer_id), Customers.city FROM Orders JOIN Customers ON Orders.customer_id=Customers.customer_id GROUP BY Customers.city;
+SELECT SUM (total_amount) FROM Orders GROUP BY EXTRACT(MONTH FROM order_date);
 SELECT MAX (total_amount) AS mx, name, email FROM  Orders JOIN Customers ON Orders.customer_id=Customers.customer_id GROUP BY Customers.customer_id ORDER BY mx
- DESC LIMIT 1
+ DESC LIMIT 1;
 SELECT Customers.customer_id, Customers.name, Customers.email, COUNT(Orders.customer_id) AS cnt FROM Orders JOIN Customers ON Orders.customer_id=Customers.customer_id 
-WHERE EXTRACT(YEAR FROM order_date) = '2023' GROUP BY Customers.customer_id ORDER BY cnt DESC LIMIT 1
+WHERE EXTRACT(YEAR FROM order_date) = '2023' GROUP BY Customers.customer_id ORDER BY cnt DESC LIMIT 1;
